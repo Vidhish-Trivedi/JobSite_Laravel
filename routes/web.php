@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,25 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// All Listings.
 Route::get('/', function () {
     return view('listings', [                               // can pass an array of data.
         "heading" => "Latest Listings",
-        "listings" => [
-            [
-                "id" => 1,
-                "title" => "Listing One",
-                "description" => "This is the description for Listing One",
-            ],
-            [
-                "id" => 2,
-                "title" => "Listing Two",
-                "description" => "This is the description for Listing Two",
-            ],
-            [
-                "id" => 3,
-                "title" => "Listing Three",
-                "description" => "This is the description for Listing Three",
-            ]
-        ]
+        "listings" => Listing::all()                        // Call to static method of model Listing.
     ]);
 });
+
+// Single Listing.
+Route::get("/listings/{id}", function ($id) {
+    return view("listing", [
+        "listing" => Listing::find($id)
+    ]);
+});
+

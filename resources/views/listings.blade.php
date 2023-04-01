@@ -7,6 +7,8 @@
 @endif
 
 @foreach($listings as $el)
-    <h2>{{ $el["title"] }}</h2>
+    <h2>
+        <a href="/listings/{{ $el['id'] }}">{{ $el["title"] }}</a>
+    </h2>
     <p>{{ $el["description"] }}</p>
 @endforeach
