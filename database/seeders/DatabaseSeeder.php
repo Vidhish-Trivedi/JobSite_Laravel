@@ -20,24 +20,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Listing::create([
-            "title" => "Title 1",
-            "tags" => "Hello, Title, Tag",
-            "companyName" => "yourCompany",
-            "location" => "Boston, MA",
-            "email" => "em1@email.com",
-            "website" => "h t t p s : //",
-            "description" => "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-        ]);
-        
-        Listing::create([
-            "title" => "Title 2",
-            "tags" => "JS, HTML, CSS",
-            "companyName" => "your_Company",
-            "location" => "Brooklyn, NY",
-            "email" => "em2@email.com",
-            "website" => "h t t p s : //",
-            "description" => "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
-        ]);
+        Listing::factory(6)->create();
     }
 }
