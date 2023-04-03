@@ -24,9 +24,22 @@ Route::get('/', function () {
 });
 
 // Single Listing.
-Route::get("/listings/{id}", function ($id) {
+// Route::get("/listings/{id}", function ($id) {
+//     $listing = Listing::find($id);
+
+//     if($listing){
+//         return view("listing", [
+//             "listing" => $listing
+//         ]);
+//     }
+//     else{
+//         abort(404, "Listing not found");
+//     }
+// });
+
+// Route Model Binding.     (Errors like 404 not found are built-in)
+Route::get("/listings/{listing}", function (Listing $listing) {
     return view("listing", [
-        "listing" => Listing::find($id)
+        "listing" => $listing
     ]);
 });
-
