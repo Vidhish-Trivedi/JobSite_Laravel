@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
@@ -16,30 +17,17 @@ use App\Models\Listing;
 */
 
 // All Listings.
-Route::get('/', function () {
-    return view('listings', [                               // can pass an array of data.
-        "heading" => "Latest Listings",
-        "listings" => Listing::all()                        // Call to static method of model Listing.
-    ]);
-});
+Route::get('/',[ListingController::class, 'index']);        // Instead of callback, pass array containing Controller class and method name.
 
 // Single Listing.
-// Route::get("/listings/{id}", function ($id) {
-//     $listing = Listing::find($id);
-
-//     if($listing){
-//         return view("listing", [
-//             "listing" => $listing
-//         ]);
-//     }
-//     else{
-//         abort(404, "Listing not found");
-//     }
-// });
-
 // Route Model Binding.     (Errors like 404 not found are built-in)
-Route::get("/listings/{listing}", function (Listing $listing) {
-    return view("listing", [
-        "listing" => $listing
-    ]);
-});
+Route::get("/listings/{listing}", [ListingController::class, 'show']);
+
+// Common Resource Routes:
+// index - Show all resources.
+// show - Show a single resource.
+// create - Show form to create a new resource.
+// store - Store new resource.
+// edit - Show form to edit resource.
+// update - Update resource.
+// destroy - Delete resource.
