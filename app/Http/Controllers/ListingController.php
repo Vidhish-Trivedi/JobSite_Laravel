@@ -15,7 +15,7 @@ class ListingController extends Controller
         // dd(request('tag'));
 
         return view('listings/index', [                          // Can also use "listings.index", see next method in class.
-            "listings" => Listing::latest()->filter(request(['tag']))->get()              // Sorted, filter using scopeFilter in ListingController.
+            "listings" => Listing::latest()->filter(request(['tag', 'search']))->get()              // Sorted, filter using scopeFilter in Listing Model.
         ]);
     }
 
