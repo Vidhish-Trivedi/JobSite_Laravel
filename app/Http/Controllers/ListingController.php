@@ -52,7 +52,9 @@ class ListingController extends Controller
         // Create entry in DB.
         Listing::create($formFields);
 
-        return redirect("/");
-    }
+        // Flash messages (stored in memory (session) for one reload/page load)
 
+        // Message is fired, view needs to display it.
+        return redirect("/")->with("message", "Listing created successfully!");
+    }
 }
