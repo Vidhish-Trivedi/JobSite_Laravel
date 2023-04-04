@@ -19,9 +19,25 @@ use App\Models\Listing;
 // All Listings.
 Route::get('/',[ListingController::class, 'index']);        // Instead of callback, pass array containing Controller class and method name.
 
+
+// Show create listing form.
+Route::get("/listings/create", [ListingController::class, 'create']);
+
+
+// Store listing
+Route::post("/listings", [ListingController::class, 'store']);
+
+
+
+
 // Single Listing.
 // Route Model Binding.     (Errors like 404 not found are built-in)
 Route::get("/listings/{listing}", [ListingController::class, 'show']);
+
+
+
+// Order of routes in this file matters, if 'show' route was placed above 'create' route, then
+// the application would look for a listing with id = 'create', and return 404.
 
 // Common Resource Routes:
 // index - Show all resources.
